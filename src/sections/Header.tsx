@@ -2,7 +2,8 @@
 import { FC, useEffect, useState } from "react";
 import Button from "@/components/Button";
 import { motion, useAnimate } from 'motion/react'
-import { div, nav } from "motion/react-client";
+import { MouseEvent} from 'react';
+import Link from "next/link";
 
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const navItems = [
@@ -97,14 +98,31 @@ const Header: FC = () => {
     );
     }
   }, [isOpen, topLineScope, topLineAnimate, bottomLineScope, bottomLineAnimate, navScope, navAnimate]);
+
+  const handleClickMobileNavItem = (e:MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsOpen(false);
+    
+    const url = new URL(e.currentTarget.href);
+    const hash = url.hash;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: "smooth",
+    })
+  }
   return (
     <header className="">
-      <div className="fixed top-0 left-0 w-full h-0 overflow-hidden bg-stone-900" ref={navScope}>
+      <div className="fixed top-0 left-0 w-full h-0 overflow-hidden bg-stone-900 z-10" ref={navScope}>
         <nav className="mt-20 flex flex-col">
           {navItems.map(({ label, href }) => (
-            <a href={href} key={label} className="text-stone-200 border-t last:border-b border-stone-800 py-8">
+            <a 
+            href={href} 
+            key={label} 
+            className="text-stone-200 border-t last:border-b border-stone-800 py-8 group/nav-item relative isolate"
+            onClick={handleClickMobileNavItem}>
               <div className="container !max-w-full flex items-center justify-between">
-                <span className="text-3xl">{label}</span>
+                <span className="text-3xl group-hover/nav-item:pl-4 transition-all duration-500">{label}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -118,22 +136,24 @@ const Header: FC = () => {
                     d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
                 </svg>
               </div>
+              <div className="absolute w-full h-0 bg-stone-800 group-hover/nav-item:h-full transition-all duration-500 bottom-0 -z-10">
+              </div>
             </a>
           ))}
         </nav>
       </div>
-      <div className="fixed top-0 left-0 w-full mix-blend-difference backdrop-blur-md">
+      <div className="fixed top-0 left-0 w-full mix-blend-difference backdrop-blur-md z-10">
         <div className="container max-w-full">
           <div className="flex justify-between h-20 items-center">
-            <div>
-              <a href="/">
-                <span className="text-xl font-bold uppercase text-white">AOC</span>
-              </a>
-            </div>
+          <Link href="/" passHref>
+              <span className="text-xl font-bold uppercase text-white cursor-pointer">
+                AOC
+              </span>
+            </Link>
           </div>
         </div>
       </div>
-      <div className="fixed top-0 left-0 w-full ">
+      <div className="fixed top-0 left-0 w-full z-10">
         <div className="container max-w-full">
           <div className="flex justify-end h-20 items-center">
             <div className="flex items-center gap-4">
@@ -164,7 +184,10 @@ const Header: FC = () => {
               <Button
                 variant='primary'
                 className="hidden md:inline-flex items-center">
+                <Link
+                  href='/contact'>
                 Contact me
+                </Link>
               </Button>
             </div>
           </div>

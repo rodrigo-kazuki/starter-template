@@ -10,7 +10,7 @@ const archivo = Archivo({
 })
 
 export const metadata: Metadata = {
-  title: "Minimal Single Page Portfolio",
+  title: "aoc.ca",
   description: "Created with Frontend Tribe",
 };
 
