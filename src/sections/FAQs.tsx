@@ -13,17 +13,17 @@ const faqs = [
   {
     question: "Do you provide the materials?",
     answer:
-      "dasfegn dwnidmnfweigninweadnja.",
+      "Usually not, but we can negociate depending on the quantity of material.",
   },
   {
     question: "Do you work outside of GTA?",
     answer:
-      "Yes, diasdodewfomvmefwd.",
+      "Yes, we can work outside of GTA if it's a big project and we will add the accommodation costs.",
   },
   {
     question: "What services do you specialize in?",
     answer:
-      "csiodjfvnuibnerinfinde.",
+      "We are a full-service interior design company, specializing in all types of interior design services.",
   },
 ];
 

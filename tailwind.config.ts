@@ -26,10 +26,12 @@ const config: Config = {
     			}
     		},
     		colors: {
+					background: '#000000',
+					text: '#FFFFFF',
+					highlight: '#1E90FF',
     			'red-orange': {
     				'500': 'color-mix(in srgb, theme("colors.red.500") 50%, theme("colors.orange.500") 50%)'
     			},
-    			background: 'hsl(var(--background))',
     			foreground: 'hsl(var(--foreground))',
     			card: {
     				DEFAULT: 'hsl(var(--card))',

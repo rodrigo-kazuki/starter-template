@@ -1,11 +1,11 @@
+import Logo from "@/components/Logo";
 import ContactForm from "@/components/ui/contact-form";
 import Footer from "@/sections/Footer";
-import Header from "@/sections/Header";
 import React from "react";
 const Page = () => {
   return (
     <div>
-      <Header />
+      <Logo/>
       <ContactForm />
       <Footer/>
     </div>
