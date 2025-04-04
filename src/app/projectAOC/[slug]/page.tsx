@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation";
 import ProjectComponent from "@/components/ProjectComponent";
-import Logo from "@/components/Logo";
-import Footer from "@/sections/Footer";
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default function ProjectPage({ params }: { params: Record<string, string> }) {
   const validProjects = ["projeto-a", "projeto-b", "projeto-c"];
 
   if (!validProjects.includes(params.slug)) {
@@ -11,10 +9,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <>
-      <Logo />
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Detalhes do Projeto</h1>
       <ProjectComponent slug={params.slug} />
-      <Footer />
-    </>
+    </div>
   );
 }

@@ -50,7 +50,7 @@ const FAQs: FC = () => {
               <div className={twMerge("flex items-center justify-between gap-4 transition-all duration-700 group-hover/faq:lg:px-8", faqIndex === selectedIndex && "lg:px-8")}>
                 <div className="text-2xl md:text-3xl lg:text-4xl">{question}</div>
                 <div className={twMerge("inline-flex items-center justify-center size-11 border border-stone-400 rounded-full shrink-0 transition duration-300 bg-stone-200", faqIndex === selectedIndex && "rotate-45")}>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
                 </div>
